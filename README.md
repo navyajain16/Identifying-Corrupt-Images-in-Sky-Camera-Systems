@@ -4,14 +4,12 @@ With the spirit of reproducible research, this repository contains all the codes
 > M. Jain, N. Jain, Y. H. Lee, and S. Dev, Identifying Corrupt Images in Sky Camera Systems
 
 ### Executive summary
-In this paper we have proposed a method to detect blurred sky/ cloud images using an external stationary marker. This marker is a stable object that does not change its position with time, and can be seen in the field of view of the camera. We use a cropped version of the entire image containing the marker to classify the image as blurred or non-blurred. 
+In this paper we have proposed a method to identify corrupt images in sky camera systems. In this method we have developed a framework which identifies the corrupt images and seperates them from the dataset.
 
-Our proposed approach is as follows:
-1. Add or select an external static marker in the field of view of captured images.
-2. Crop the area containing the static marker from the captured image.
-3. Detect if the external staticmarker is blurred or non-blurred using a blur-detection metric.
-
-We have used 2 metrics : Laplacian and Fast Fourier Transform (FFT) method.
+Our framework is as follows:
+1. First we calculate Entropy values, Laplacian values and Color channel values. 
+2. These values are then used to train a machine learning model (In this experiment Decision tree, Random forest and K neighbours models are used)
+3. The trained model is then used to classify images as corrupt or non-corrupt.
 
 ### Environment 
 This project was tested on `python 3.8` using a `Windows 10` environment.
