@@ -41,13 +41,41 @@ for category in Categories:
 #Images passed through various steps of the framework
 for image in os.listdir(src): 
         cloud_img = cv2.imread(image)
-        #gray = cv2.cvtColor(cloud_img, cv2.COLOR_BGR2GRAY)
         shawl_gray =rgb2gray(cloud_img)
-        result = shannon_entropy(shawl_gray[:,0])
-        #imagei = cv2.imread(image)
-        fm = variance_of_laplacian(shawl_gray) 
-        valuess = shawl_gray.var()
-        img = np.vstack(np.asarray([result, fm,valuess]))
+        result = shannon_entropy(shawl_gray[:,0]) # Finding Entropy 
+        fm = variance_of_laplacian(shawl_gray)  #Finding variance of Laplacian
+        #Any one of the following colour channels are to be used, in this code we have appended grayscale channel values.
+        valuess = shawl_gray.var() #Finding grayscale values
+        red = cloud_img[:,:,2] #Finding Red channel values
+        redvalue = red.var()
+        green = cloud_img[:,:,1] #Finding Green channel values
+        greenvalue= green.var()
+        blue = cloud_img[:,:,0] #Finding Blue Channel values
+        bluevalue= blue.var()
+        redblue = cloud_img[:,:,2] - cloud_img[:,:,0] #Finding R-B channel values
+        redblueval = redblue.var()
+        redss = cloud_img[:,:,2]/ (cloud_img[:,:,0] + 0.1) #Finding R/B channel values
+        cc = redss.max()
+        dd = redss.min()
+        redsso =(redss-cc)*(225/(dd-cc))
+        redbvalue = redsso.var()
+        if redbvalue and redblueval == 0:
+            rbvalue = 0
+            print ("value 0")
+        else:
+            rb = (cloud_img[:,:,0] - cloud_img[:,:,2])/(cloud_img[:,:,0] + cloud_img[:,:,2]+0.1) 
+            c= np.amax(rb)
+            d= rb.min() 
+            rbo = (rb-c)*(225/(d-c)) 
+            rbvalue = rbo.var() #Finding R-B/R+B channel values
+        hsv_img = cv2.cvtColor(cloud_img, cv2.COLOR_BGR2HSV)
+        h = hsv_img[:, :, 0]
+        hval = h.var() #Finding h channel values
+        s = hsv_img[:, :, 1] #Finding s channel values
+        sval = s.var()
+        v = hsv_img[:, :, 2] #Finding v channel values
+        vval = v.var()
+        img = np.vstack(np.asarray([result, fm,valuess])) #Appending the values of entropy, laplacian and one color channel (in this case, grayscale)
         jimage = np.array(cloud_img).flatten()
         finalimg = np.array([jimage,img])
         fimg = finalimg.flatten() 
