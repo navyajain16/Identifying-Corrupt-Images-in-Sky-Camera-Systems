@@ -10,7 +10,7 @@ from sklearn import metrics
 from skimage.color import rgb2hsv, rgb2gray, rgb2yuv
 from skimage.measure.entropy import shannon_entropy
 import shutil
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 src="C:\dataset cloud\test"  #Path of inital dataset
 des ="C:\dataset cloud\bad"  #Path of repository created for storing corrupt images 
