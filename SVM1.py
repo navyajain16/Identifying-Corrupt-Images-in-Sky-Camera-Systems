@@ -12,8 +12,8 @@ from skimage.measure.entropy import shannon_entropy
 import shutil
 from sklearn.tree import DecisionTreeClassifier
 
-src="‪C:\dataset cloud\test"  #Path of inital dataset
-des ="‪C:\dataset cloud\bad"  #Path of repository created for storing corrupt images 
+src="C:\dataset cloud\test"  #Path of inital dataset
+des ="C:\dataset cloud\bad"  #Path of repository created for storing corrupt images 
 
 data = []
 
