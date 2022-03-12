@@ -26,9 +26,9 @@ model = pickle.load(pick)
 pick.close() 
 
 #Path for source dataset 
-src ="test"
+src ="C:\dataset cloud\test"
 #Path for directory created for storing corrupt images
-dub ="bad"
+dub ="C:\dataset cloud\bad"
  
 corimg=[]
 
