@@ -6,7 +6,7 @@ With the spirit of reproducible research, this repository contains all the codes
 ### Executive summary
 In this paper we have proposed a method to identify corrupt images in sky camera systems. In this method we have developed a framework which identifies the corrupt images and seperates them from the dataset.
 
-Our framework is as follows:
+Our approach is as follows:
 1. First we calculate Entropy values, Laplacian values and Color channel values. 
 2. These values are then used to train a machine learning model (In this experiment Decision tree, Random forest and K neighbours models are used)
 3. The trained model is then used to classify images as corrupt or non-corrupt.
