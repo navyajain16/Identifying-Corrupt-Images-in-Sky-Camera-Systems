@@ -99,7 +99,7 @@ ypred = model.predict(images)
 dec = np.asarray((list(sub[0] for sub in probability)))
 
 #Moving corrupt images to seperate directory
-for value,img in zip(ypred,catimg):
+for value,img in zip(ypred,corimg):
     if value == 0:
         print(img + " " + "bad")
         shutil.move(os.path.join(src, img), dub)
